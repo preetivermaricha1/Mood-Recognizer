@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Mood Recognixer {% endblock title %}
+{% block body %}
+<center>
+<div class="container my-5">
+    <div style="background-image: url('/static/background1.jpeg');
+    width:900px;height:450px">
+    
+    <div style="color:black">
+        <center>
+      <div class="container my-5">
+      <h1> You need to just ans the below question</h1>
+      <br>
+      <h1>{{variable}}</h1>
+      <br>
+      <form action="mycode/" method="post">
+       {% csrf_token %}
+      <input id="c2" type="text" name="name">
+      <button type="submit" id="firstname" onclick="hey()">submit</button>
+      <!-- <input type="submit" value="ohk"> -->
+      <a class="btn btn-dark" id="firstname" type="submit" onclick=hey()>Guess</a>
+      </form>
+      <h1 id="c1">you have a {{data}} mood</h1>
+      </div>
+    </center>
+    </div>
+    </div>
+</div>
+</center>
+<script>
+    c1 = document.getElementById("c1");   
+    c1.setAttribute("style","visibility:hidden");
+		function hey(){
+      data=document.getElementById("name")
+			c1.setAttribute("style","visibility:visible");
+
+            }
+</script>
+{% endblock body %}
