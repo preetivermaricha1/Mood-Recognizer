@@ -22,5 +22,6 @@ urlpatterns = [
     path('about/', include('Home.urls')),
     path('mainpage/', include('Home.urls')),
     path('mainpage/mycode/', include('Home.urls')),
+    path('mainpage/mycode1/', include('Home.urls')),
     path('mymood/', include('Home.urls')),
 ]

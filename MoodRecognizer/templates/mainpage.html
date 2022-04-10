@@ -3,31 +3,41 @@
 {% block body %}
 <center>
 <div class="container my-5">
-    <div style="background-image: url('/static/background1.jpeg');
-    width:900px;height:450px">
+    <div style="background-image: url('/static/background2.jpg');width:1200px;height:520px;background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;font-family: 'Times New Roman', Times, serif;">
     
     <div style="color:black">
         <center>
       <div class="container my-5">
-      <h1> You need to just ans the below question</h1>
+        <br><br><br>
+      <h1> To guess your mood please answer the below question</h1>
       <br>
       <h1>{{variable}}</h1>
       <br>
       <form action="mycode/" method="post">
        {% csrf_token %}
       <input id="c2" type="text" name="name">
-      <button type="submit" id="firstname" onclick="hey()",>submit</button>
+      <br><br>
+      <button type="submit" id="firstname" class="btn btn-dark">Submit Text</button>
+  
       <!-- <input type="submit" value="ohk"> -->
-      <a class="btn btn-dark" id="firstname" type="submit" onclick href="/mymood">Guess</a>
       </form>
-      <h1 id="c1">you have a {{data}} mood</h1>
+      <form action="mycode1/" method="post">
+        {% csrf_token %}
+        <br><br>
+        <button type="submit" id="firstname" class="btn btn-dark" onclick="hey()",>Submit Audio</button>
+       <br><br>
+       <!-- <input type="submit" value="ohk"> -->
+       </form>
+      <!-- <h1 id="c1">you have a {{data}} mood</h1> -->
       </div>
     </center>
     </div>
     </div>
 </div>
 </center>
-<script>
+<!-- <script>
     c1 = document.getElementById("c1");   
     c1.setAttribute("style","visibility:hidden");
 		function hey(){
@@ -35,5 +45,5 @@
 			c1.setAttribute("style","visibility:visible");
 
             }
-</script>
+</script> -->
 {% endblock body %}
