@@ -16,9 +16,9 @@
       <form action="mycode/" method="post">
        {% csrf_token %}
       <input id="c2" type="text" name="name">
-      <button type="submit" id="firstname" onclick="hey()">submit</button>
+      <button type="submit" id="firstname" onclick="hey()",>submit</button>
       <!-- <input type="submit" value="ohk"> -->
-      <a class="btn btn-dark" id="firstname" type="submit" onclick=hey()>Guess</a>
+      <a class="btn btn-dark" id="firstname" type="submit" onclick href="/mymood">Guess</a>
       </form>
       <h1 id="c1">you have a {{data}} mood</h1>
       </div>
