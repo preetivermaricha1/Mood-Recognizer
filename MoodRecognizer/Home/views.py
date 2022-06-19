@@ -4,6 +4,10 @@ from django.shortcuts import render, HttpResponse
 import random
 import speech_recognition as sr
 from playsound import playsound
+import pygame
+from pygame import mixer
+from tkinter import *
+import os
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
@@ -38,7 +42,7 @@ def mycode(request):
     return render(request,'mymood.html',context)
 
 def mycode1(request):
-    data = request.POST.get('name')
+    # data = request.POST.get('name')
     # r=sr.Recognizer()
     # with sr.Microphone() as source:
     #     print("hi Speaking")
@@ -57,7 +61,62 @@ def mycode1(request):
     # return render(request,'mymood.html',context)
     
 
-    
+def music(request):
+    def playsong():
+        currentsong=playlist.get(ACTIVE)
+        print(currentsong)
+        mixer.music.load(currentsong)
+        songstatus.set("Playing")
+        mixer.music.play()
+
+    def pausesong():
+        songstatus.set("Paused")
+        mixer.music.pause()
+
+    def stopsong():
+        songstatus.set("Stopped")
+        mixer.music.stop()
+
+    def resumesong():
+        songstatus.set("Resuming")
+        mixer.music.unpause()    
+
+    root=Tk()
+    root.title('Music player project')
+
+    mixer.init()
+    songstatus=StringVar()
+    songstatus.set("choosing")
+
+#playlist---------------
+
+    playlist=Listbox(root,selectmode=SINGLE,bg="DodgerBlue2",fg="white",font=('arial',15),width=40)
+    playlist.grid(columnspan=5)
+
+    os.chdir(r'D:\song Recommender\MoodRecognizer\static\neutral')
+    songs=os.listdir()
+    for s in songs:
+        playlist.insert(END,s)
+
+    playbtn=Button(root,text="play",command=playsong)
+    playbtn.config(font=('arial',20),bg="DodgerBlue2",fg="white",padx=7,pady=7)
+    playbtn.grid(row=1,column=0)
+
+    pausebtn=Button(root,text="Pause",command=pausesong)
+    pausebtn.config(font=('arial',20),bg="DodgerBlue2",fg="white",padx=7,pady=7)
+    pausebtn.grid(row=1,column=1)
+
+    stopbtn=Button(root,text="Stop",command=stopsong)
+    stopbtn.config(font=('arial',20),bg="DodgerBlue2",fg="white",padx=7,pady=7)
+    stopbtn.grid(row=1,column=2)
+
+    Resumebtn=Button(root,text="Resume",command=resumesong)
+    Resumebtn.config(font=('arial',20),bg="DodgerBlue2",fg="white",padx=7,pady=7)
+    Resumebtn.grid(row=1,column=3)
+
+    mainloop()
+
+    return render(request, 'music.html')
 
 
 

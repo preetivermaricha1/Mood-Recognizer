@@ -9,5 +9,6 @@ urlpatterns = [
     path('mainpage/mycode/', views.mycode, name='Home'),
     path('mainpage/mycode1/', views.mycode, name='Home'),
     path('mymood/', views.mymood, name='Home'),
+    path('music/', views.music, name='Home'),
     
 ]
